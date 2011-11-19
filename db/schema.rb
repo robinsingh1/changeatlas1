@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111119024602) do
+ActiveRecord::Schema.define(:version => 20111119063708) do
 
   create_table "events", :force => true do |t|
     t.string   "address"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(:version => 20111119024602) do
     t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "eventID"
+    t.string   "name"
+    t.string   "ownerID"
+    t.string   "description"
+    t.string   "start_time"
+    t.string   "end_time"
+    t.string   "location"
+    t.string   "latitude"
+    t.string   "longitude"
   end
 
 end
