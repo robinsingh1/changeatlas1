@@ -1,0 +1,97 @@
+body {
+	background-image:url(../images/bg.png);
+	color:#ffffff;
+	margin:0px auto;
+	font-family: Arial,Helvetica,sans-serif;
+}
+
+#main_content {
+	width:1000px;
+	margin:0px auto;
+}
+
+#site_header {
+	width:100%;
+	height:100px;
+	padding:10px;
+}
+
+#site_logo {
+	float:left;
+}
+
+#site_tag {
+	float:left;
+	height:100%;
+	position:relative;
+	top: 33px;
+	padding-left:10px;
+	border-left: 4px solid black;
+	height:55px;
+}
+#light_events_for_change{
+	position: relative;
+    top: 42px;
+    width: 300px;
+}
+
+#fbButton {
+	position:relative;
+	top:50px;
+	right:50px;
+	float:right;
+}
+#post_event{
+	background-image: url(../images/post_img.png);
+	background-repeat: no-repeat;
+	text-indent: -99em;
+	height: 30px;
+	width: 146px;
+	border: none;
+}
+#event_field{
+	width: 240px;
+	margin: 0 10px;
+	padding-bottom: 6px;
+    padding-left: 7px;
+    padding-top: 6px;
+	border: 1px solid #BBB;
+	color: #666;
+}
+
+#gmap_padding_box {
+	position:absolute;
+	margin:0px auto;
+	padding-left:100px;
+	
+}
+
+#gmap {
+	padding:10px;
+	background-color:#ffffff;
+	height: 400px;
+	width: 800px;
+	margin:0 auto;
+  
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#gmaps4rails_map {
+  width: 800px;
+  height: 400px;
+
+}
+
+#map_container {
+	text-align:center;
+  	width: 800px;
+	float:left;
+<<<<<<< HEAD
+=======
+}
+
+.infowindow {
+	color:#000000;
+>>>>>>> 269085967cbcb3a777d0ef0a0ecfb65441496ae6
+}
