@@ -2,14 +2,20 @@ require 'rubygems'
 require 'json'
 require "net/http"
 
-class Event
-  attr_accessor :url
-  
-  def initialize(url)
-    id = url.split("/").last 
+class FBEvent 
+    
+  def initialize
+    id = params[:url].split("/").last 
     newurl = "http://graph.facebook.com/#{id}/"  
     @resp = Net::HTTP.get_response(URI.parse(newurl))
     @result = JSON.parse(@resp.body)
+    event = Event.new(:eventID => getEventID, :latitude => getEventLatitude, :longitude => getEventLongitude, :name => getEventName, :description => getEventDescription);
+    if event.save
+      p "SAVED!!!!------"
+    else
+      p "FAILED"
+    end
+    out = "true"
   end
   def getJSON
     evJSON = @resp
@@ -57,3 +63,4 @@ class Event
     end
   end
 end
+

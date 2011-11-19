@@ -22,7 +22,12 @@ body {
 
 #site_tag {
 	float:left;
-	height:100%;	
+	height:100%;
+	position:relative;
+	top: 33px;
+	padding-left:10px;
+	border-left: 4px solid black;
+	height:55px;
 }
 #light_events_for_change{
 	position: relative;
@@ -44,7 +49,7 @@ body {
 	width: 146px;
 	border: none;
 }
-#url{
+#event_field{
 	width: 240px;
 	margin: 0 10px;
 	padding-bottom: 6px;
@@ -82,8 +87,11 @@ body {
 	text-align:center;
   	width: 800px;
 	float:left;
+<<<<<<< HEAD
+=======
 }
 
 .infowindow {
 	color:#000000;
+>>>>>>> 269085967cbcb3a777d0ef0a0ecfb65441496ae6
 }
