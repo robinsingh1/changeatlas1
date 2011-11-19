@@ -22,16 +22,8 @@ function success(position){
 }
 
 function gmaps4rails_callback() {
-	
-  // google.maps.event.addListener(marker, 'click', function(object){
-  //    alert(object.latLng);
-  // 
-  //    alert(Gmaps4Rails.map.userLocation);
-  //    
-  // });
-   //alert(Gmaps4Rails.map.userLocation);
-         locate();
-		
+
+	locate();	
 }
 function infoCallback(marker) {
 	var infowindow = new google.maps.InfoWindow({
@@ -49,15 +41,49 @@ function locate(){
 }
 </script>
 
+<script type="text/javascript">
+	$(function(){
+		$("#post_event_box").fancybox({
+			'width'				: 500,
+			'height'			: 400,
+			'showCloseButton'	: true,
+			'scrolling'			: 'no',
+			'transitionIn'		: 'elastic',
+			'transitionOut'		: 'elastic',
+			'onStart' 			: function(){
+				document.getElementById('post_event_content').style.display = 'block';
+			 },
+			'onClosed' 			: function(){
+				document.getElementById('post_event_content').style.display = 'none';
+			 }
+		});
+		jQuery('#fancybox-inner').css({'-moz-border-radius':'10px', '-webkit-border-radius':'10px', 'border-radius':'10px'});
+		jQuery('#fancybox-outer').css({'-moz-border-radius':'10px', '-webkit-border-radius':'10px', 'border-radius':'10px', 'overflow':'hidden'});
+		jQuery('#fancybox-wrap').css({'-moz-border-radius':'10px', '-webkit-border-radius':'10px', 'border-radius':'10px'});
+		
+		jQuery('#fancybox-outer').css({'-moz-box-shadow:':'5px 5px 5px #ccc', '-webkit-box-shadow':'5px 5px 5px #ccc', 'box-shadow:':'5px 5px 5px #ccc'});
+	});	
+</script>
+
+<div id="post_event_content" style="height: auto; width: 630px; color: #000; padding: 5px 15px 5px 30px; display: none;">	
+	<%= form_tag(:controller=>"FBEvent", :action=>"initialize", :method => "post") do %>
+	  <%= label_tag(:q, "Enter Facebook Event Link") %>
+	  <%= text_field_tag(:url) %>
+	  <%= submit_tag("Post Event", :id=>'post_event') %>
+	<% end %>	
+</div>
+
 <div id = "site_header">
 	<div id = "site_logo">
-		<%= image_tag('no_bg_logo.png', :height => '109px', :width => '278px') %>
+		<%= image_tag('no_bg_logo.png') %>
 	</div>
 	<div id = "site_tag">
-		<h3>Powered by WeDay Events</h3>
+		<%= image_tag('lighteventsforchange.png', :id=>"light_events_for_change") %>
 	</div>
 	<div id = "fbButton">
-		<%= link_to image_tag('fbbutton.png', :height => '30px', :width => '146px')%>
+		<a id="post_event_box" href="#post_event_content">
+			<%= image_tag('fbbutton.png', :height => '30px', :width => '146px')%>
+		</a>
 	</div>
 </div>
 <div id = "gmap_padding_box">
