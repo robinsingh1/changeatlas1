@@ -1,3 +1,52 @@
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript" charset="utf-8">
+var marker;
+var infowindow = new google.maps.InfoWindow({
+	content : "<div style='text-align: center;'><h3 style='margin: 0'>" 
+		+ "Something" + "</h3><h4 style='margin: 0'>" + "Some address" + "</h4>" 
+		+ "Some description" + "</div>"
+});
+
+function success(position){
+	var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	Gmaps4Rails.map.panTo(latlng);
+	//Gmaps4Rails.map.setZoom(14);
+	marker = new google.maps.Marker({
+      position: latlng,
+      map: Gmaps4Rails.map,
+      title:"You are here!"
+  	});
+  	Gmaps4Rails.map.setZoom(14);
+
+	  google.maps.event.addListener(marker, 'click', function(object){
+	   	infoCallback(Gmaps4Rails.map, infowindow, marker);
+	  });
+
+	//google.maps.event.addListener(marker, 'click', infoCallback(Gmaps4Rails.map, infowindow, marker));
+}
+
+function gmaps4rails_callback() {
+	
+  // google.maps.event.addListener(marker, 'click', function(object){
+  //    alert(object.latLng);
+  // 
+  //    alert(Gmaps4Rails.map.userLocation);
+  //    
+  // });
+   //alert(Gmaps4Rails.map.userLocation);
+         locate();
+		
+}
+function infoCallback(map, infowindow, marker) {
+	infowindow.open(map, marker);
+}
+function locate(){
+ 	if (navigator.geolocation) {
+  		navigator.geolocation.getCurrentPosition(success);
+   	}
+}
+</script>
 
 <div id = "site_header">
 	<div id = "site_logo">
@@ -13,21 +62,9 @@
 <div id = "gmap_padding_box">
 	<div id = "gmap">
 	<%= gmaps({
-	  "map_options" => {"zoom" => 5, "type" => "ROADMAP", "auto_adjust" => true},
-	  "markers"     => {"data" => @markers }
+	  "map_options" => {"auto_adjust" => false, "zoom" => 2, "type" => "ROADMAP" },
+	  "markers"     => {"data" => @json }
 	 })
 	%>
 	</div>
 </div>
-
-
-<script type="text/javascript" charset="utf-8">
-
-function gmaps4rails_callback() {
-    google.maps.event.addListener(Gmaps4Rails.map, 'idle', function () {
-        var bounds = Gmaps4Rails.map.getBounds();
-        drawItems(bounds);
-    });
-}
-
-</script>
