@@ -1,0 +1,23 @@
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+
+<div id = "site_header">
+	<div id = "site_logo">
+		<%= image_tag('no_bg_logo.png', :height => '109px', :width => '278px') %>
+	</div>
+	<div id = "site_tag">
+		<%= image_tag('event4changetxt.png', :height => '52px', :width => '373px') %>
+	</div>
+	<div id = "fbButton">
+		<%= link_to image_tag('fbbutton.png', :height => '30px', :width => '146px')%>
+	</div>
+</div>
+<div id = "gmap_padding_box">
+	<div id = "gmap">
+	<%= gmaps({
+	  "map_options" => {"auto_adjust" => true, "type" => "ROADMAP" },
+	  "markers"     => {"data" => @event }
+	 })
+	%>
+	</div>
+</div>
