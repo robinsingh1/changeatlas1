@@ -14,6 +14,15 @@ class Event
   def getJSON
     evJSON = @resp
   end
+  def getEndTime
+    evEnd = "#{@result["end_time"]}"
+  end
+  def getLastUpdate
+    evLastUp = "#{@result["updated_time"]}"
+  end
+  def getOwnerID 
+    evOwnID = "#{@result["owner"]["id"]}"
+  end
   def getEventID
     evID = "#{@result["id"]}"
   end
