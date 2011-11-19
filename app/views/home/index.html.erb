@@ -1,0 +1,33 @@
+
+<div id = "site_header">
+	<div id = "site_logo">
+		<%= image_tag('no_bg_logo.png', :height => '109px', :width => '278px') %>
+	</div>
+	<div id = "site_tag">
+		<h3>Powered by WeDay Events</h3>
+	</div>
+	<div id = "fbButton">
+		<%= link_to image_tag('fbbutton.png', :height => '30px', :width => '146px')%>
+	</div>
+</div>
+<div id = "gmap_padding_box">
+	<div id = "gmap">
+	<%= gmaps({
+	  "map_options" => {"zoom" => 5, "type" => "ROADMAP", "auto_adjust" => true},
+	  "markers"     => {"data" => @markers }
+	 })
+	%>
+	</div>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+
+function gmaps4rails_callback() {
+    google.maps.event.addListener(Gmaps4Rails.map, 'idle', function () {
+        var bounds = Gmaps4Rails.map.getBounds();
+        drawItems(bounds);
+    });
+}
+
+</script>

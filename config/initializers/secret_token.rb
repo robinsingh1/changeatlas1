@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Changeatlas1::Application.config.secret_token = 'becc2e5a9e1c1fe3a83d3313f30328ba77a3c5148719b28b3dfa5dd4860e242ef6e215b14a9f6072ac81c2f4c1f84b51ff6f8980fcd77e1cc6bbbf4f1bcbe254'
+ChangeAtlas::Application.config.secret_token = 'a0b520eb4a8331e9e88734217961353b9562644a29d47910d24fe4df201dd126fc740d2992974c3a73f78554b3b8d9b907b1181e18e0363ea25e89536c5718bd'

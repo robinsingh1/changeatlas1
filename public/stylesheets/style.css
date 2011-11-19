@@ -1,0 +1,67 @@
+
+body {
+	background-image:url(../images/bg.png);
+	color:#ffffff;
+	margin:0px auto;
+}
+
+#main_content {
+	width:1000px;
+	margin:0px auto;
+}
+
+#site_header {
+	width:100%;
+	height:100px;
+	padding:10px;
+}
+
+#site_logo {
+	float:left;
+}
+
+#site_tag {
+	float:left;
+	height:100%;	
+}
+
+#fbButton {
+	position:relative;
+	top:50px;
+	right:50px;
+	float:right;
+}
+
+
+#gmap_padding_box {
+	position:absolute;
+	margin:0px auto;
+	padding-left:100px;
+	
+}
+
+#gmap {
+	padding:10px;
+	background-color:#ffffff;
+	height: 400px;
+	width: 800px;
+	margin:0 auto;
+  
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+  
+}
+
+#gmaps4rails_map {
+  width: 800px;
+  height: 400px;
+
+}
+
+#map_container {
+	text-align:center;
+  	width: 800px;
+	float:left;
+  
+	
+}
