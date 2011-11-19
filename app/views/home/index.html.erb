@@ -12,7 +12,7 @@ function success(position){
       map: Gmaps4Rails.map,
       title:"You are here!"
   	});
-  	Gmaps4Rails.map.setZoom(14);
+  	Gmaps4Rails.map.setZoom(4);
 
 	  google.maps.event.addListener(marker, 'click', function(object){
 		infoCallback(marker);
@@ -22,17 +22,9 @@ function success(position){
 }
 
 function gmaps4rails_callback() {
-	
-  // google.maps.event.addListener(marker, 'click', function(object){
-  //    alert(object.latLng);
-  // 
-  //    alert(Gmaps4Rails.map.userLocation);
-  //    
-  // });
-   //alert(Gmaps4Rails.map.userLocation);
-         locate();
-		
+	locate();	
 }
+
 function infoCallback(marker) {
 	var infowindow = new google.maps.InfoWindow({
 		content : "<div style='text-align: center; color: #000;'><h3 style='margin: 0'>" 
@@ -47,6 +39,11 @@ function locate(){
   		navigator.geolocation.getCurrentPosition(success);
    	}
 }
+
+function createMarker(lat, lng, eventName, eventDesc) {
+	
+}
+
 </script>
 
 <div id = "site_header">
@@ -54,7 +51,7 @@ function locate(){
 		<%= image_tag('no_bg_logo.png', :height => '109px', :width => '278px') %>
 	</div>
 	<div id = "site_tag">
-		<h3>Powered by WeDay Events</h3>
+		<%= image_tag('event4changetxt.png', :height => '52px', :width => '373px') %>
 	</div>
 	<div id = "fbButton">
 		<%= link_to image_tag('fbbutton.png', :height => '30px', :width => '146px')%>

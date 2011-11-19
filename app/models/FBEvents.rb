@@ -5,11 +5,17 @@ require "net/http"
 class FBEvent 
   attr_accessor :url
   
-  def initialize(url)
-    id = url.split("/").last 
+  def initialize
+    id = "https://www.facebook.com/events/242641089125639/".split("/").last 
     newurl = "http://graph.facebook.com/#{id}/"  
     @resp = Net::HTTP.get_response(URI.parse(newurl))
     @result = JSON.parse(@resp.body)
+    event = Event.new(:eventID => getEventID, :latitude => getEventLatitude, :longitude => getEventLongitude, :name => getEventName, :description => getEventDescription);
+    if event.save
+      p "SAVED!!!!------"
+    else
+      p "FAILED"
+    end
     out = "true"
   end
   def getJSON
