@@ -1,5 +1,80 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAEj0XhJ2jmr5a-5ivK1JUxRS1kPAFEiCK9MRnUMFf7lgY4sXvCRTd12DQYibJkipLSTIJ56yUj-TDKw" type="text/javascript"></script>
+<script src="http://www.mayzes.org/js/jquery.googlemaps1.01.js"></script>
+<script src="date.js"></script>
+
+<script>
+  FB.init({
+    appId  : '324254170923210',
+    status : true, // check login status
+    cookie : true, // enable cookies to allow the server to access the session
+    xfbml  : true, // parse XFBML
+    oauth  : true, // enable OAuth 2.0
+  });
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        eventId = <%= @eventID %>;
+        
+        if(eventId) {
+            initMapWithEvent(eventId);
+        } else {
+            initMap();
+        }
+        
+        FB.getLoginStatus(function(response) {
+            if(response.authResponse) {
+                getUser();
+            }
+        });
+
+        FB.Event.subscribe('auth.login', function () {
+            getUser();
+        });
+        
+    });
+    
+    function initMap(){
+        $("#map_canvas").show();
+        
+        $('#map_canvas').googleMaps({
+            ///// PUT MARKERS HERE
+        });
+    }
+    
+    function initMapWithEvent(eventId){
+        FB.api('/'+eventId, function(response) {
+            // console.log(response);
+            $("#map_canvas").show();
+            
+            eventDate = Date.parse(response.start_time).toString('MMM-d-yyyy');
+            $("#popup").html("<strong>" + response.name + "</strong> on " + eventDate + "<div class='fb-send' data-href='example.com'></div>");
+            $('#map_canvas').googleMaps({
+                markers: {
+                    latitude: response.venue.latitude,
+                    longitude: response.venue.longitude,
+                    info: {
+                        layer: '#popup',
+                        popup: true
+                    }
+                }
+            });
+        });
+    }
+    
+    function getUser(){
+        $("#facebook_connect").hide();
+        
+        FB.api('/me', function(response) {
+          // alert('Your email is ' + response.email);
+        });
+    }
+    
+
+</script>
+
 
 <div id = "site_header">
 	<div id = "site_logo">

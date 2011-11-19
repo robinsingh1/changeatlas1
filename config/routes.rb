@@ -1,12 +1,13 @@
 ChangeAtlas::Application.routes.draw do
   get "home/index"
   get "home/events"
+  get "home/sendIFrame"
   
   root :to => "home#index"
   
   match 'events/:eventID', :to => 'home#events', :as => 'events'
   
-  
+  match 'sendIFrame/:eventID', :to => 'home#sendIFrame', :as => 'sendIFrame'
   
 
   # The priority is based upon order of creation:
