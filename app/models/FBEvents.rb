@@ -3,10 +3,9 @@ require 'json'
 require "net/http"
 
 class FBEvent 
-  attr_accessor :url
-  
+    
   def initialize
-    id = "https://www.facebook.com/events/242641089125639/".split("/").last 
+    id = params[:url].split("/").last 
     newurl = "http://graph.facebook.com/#{id}/"  
     @resp = Net::HTTP.get_response(URI.parse(newurl))
     @result = JSON.parse(@resp.body)
