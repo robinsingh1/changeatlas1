@@ -48,13 +48,3 @@ class Event
     end
   end
 end
-
-
-ev = Event.new("https://www.facebook.com/events/302836383073987/")
-puts ev.getJSON
-puts ev.getEventID
-puts ev.getEventName
-puts ev.getEventLocation
-puts ev.getEventLatitude
-puts ev.getEventLongitude
-puts ev.getEventDescription
