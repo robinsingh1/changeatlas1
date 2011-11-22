@@ -8,7 +8,13 @@ class Event < ActiveRecord::Base
   end
   
   def gmaps4rails_infowindow
-    "<div class='infowindow'>#{CGI.escapeHTML(self.name)})<br/><a href='http://www.facebook.com/events/#{self.eventID}'>Event Link</a><iframe height='20px' width='65px' frameborder='0' scrolling='no' allowtransparency='true' src='/home/sendIFrame?url=http://changeatlas.heroku.com/home/events/#{self.eventID}'></iframe></div>"
+    "<div class='infowindow'>" +
+        "#{CGI.escapeHTML(self.name)})<br/><br/>" +
+        "#{self.start_time} - #{self.end_time}" +
+        "<a href='http://www.facebook.com/events/#{self.eventID}'>" + 
+        "Event Link" +
+        "</a><br/>" + 
+        "</div>"
   end
   
   

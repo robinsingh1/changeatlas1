@@ -5,11 +5,19 @@ require "net/http"
 class FBEvent 
     
   def initialize
-    id = params[:url].split("/").last 
+    id = "https://www.facebook.com/events/231919010201636/".split("/").last 
     newurl = "http://graph.facebook.com/#{id}/"  
     @resp = Net::HTTP.get_response(URI.parse(newurl))
     @result = JSON.parse(@resp.body)
-    event = Event.new(:eventID => getEventID, :latitude => getEventLatitude, :longitude => getEventLongitude, :name => getEventName, :description => getEventDescription);
+    event = Event.new(:eventID => getEventID, 
+                      :name => getEventName, 
+                      :start_time => getStartTime,
+                      :end_time => getEndTime,
+                      :latitude => getEventLatitude, 
+                      :longitude => getEventLongitude,
+                      :location => getEventLocation,
+                      :description => getEventDescription,
+                      :ownerID => getOwnerID);
     if event.save
       p "SAVED!!!!------"
     else
@@ -19,6 +27,9 @@ class FBEvent
   end
   def getJSON
     evJSON = @resp
+  end
+  def getStartTime
+    evStart = "#{@result["start_time"]}"
   end
   def getEndTime
     evEnd = "#{@result["end_time"]}"

@@ -12,13 +12,11 @@ function success(position){
       map: Gmaps4Rails.map,
       title:"You are here!"
   	});
-  	Gmaps4Rails.map.setZoom(4);
+  	Gmaps4Rails.map.setZoom(6);
 
 	  google.maps.event.addListener(marker, 'click', function(object){
 		infoCallback(marker);
 	  });
-
-	//google.maps.event.addListener(marker, 'click', infoCallback(Gmaps4Rails.map, infowindow, marker));
 }
 
 function gmaps4rails_callback() {
@@ -31,7 +29,6 @@ function infoCallback(marker) {
 			+ "Something" + "</h3><h4 style='margin: 0'>" + "Some address" + "</h4>" 
 			+ "Some description" + "</div>"
 	});
-	// alert(infowindow.getContent());
 	infowindow.open(Gmaps4Rails.map, marker);
 }
 function locate(){
@@ -39,11 +36,6 @@ function locate(){
   		navigator.geolocation.getCurrentPosition(success);
    	}
 }
-
-function createMarker(lat, lng, eventName, eventDesc) {
-	
-}
-
 </script>
 
 <div id = "site_header">
